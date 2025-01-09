@@ -45,6 +45,9 @@ const app = Vue.createApp({
             .catch(error=>{
                 console.log(error);
             })
+        },
+        updateMethod(){
+            
         }
     },
     computed:{
