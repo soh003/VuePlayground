@@ -4,9 +4,9 @@ const app = Vue.createApp({
             intro:'Playgroundstable',
             playgrounds: [],
             newPlayground:{
-                name:'',
-                maxChildren: null,
-                minAge: null,
+                Name:'',
+                MaxChildren: null,
+                MinAge: null,
             },
 
         }
@@ -23,7 +23,7 @@ const app = Vue.createApp({
                 }
               )
         },
-        AddMethod(){
+        addMethod(){
             const newPlayground = {
                 name: this.newPlayground.name,
                 maxChildren: this.newPlayground.maxChildren,
@@ -34,6 +34,12 @@ const app = Vue.createApp({
             axios.post('https://playgroundrest20250109130538.azurewebsites.net/api/Playgrounds', newPlayground)
             .then(Response=>{
                 console.log('Playground added', Response.data);
+
+            //Opdaterer tabellen
+            this.getAll();
+            //Ryd inputfelter    
+            this.newPlayground = { name: '', maxChildren: '', minAge: '' };
+
                 this.newPlayground.push(Response.data);
             })
             .catch(error=>{

@@ -16,9 +16,9 @@
         <div class="nav-bar"></div>
     
         <h1>{{intro}}</h1>
-
+        <!--Get All her-->
         <button v-on:click="getAll">Get playgrounds</button>
-
+        <!--table her-->
         <table v-if="playgrounds.length > 0">
             <thead>
                 <tr>
@@ -37,8 +37,13 @@
                 </tr>
             </tbody>
         </table>
-
+        <!--input her-->
+        <div>Name: <input v-model="newPlayground.name"></div>
+        <div>Max Children: <input v-model="newPlayground.maxChildren"></div>
+        <div>Min Age: <input v-model="newPlayground.minAge"></div>
         
+        <!--knap her-->
+        <button v-on:click="addMethod" class="simpel-knap" >Add Playground</button>
 
     </div>
     
