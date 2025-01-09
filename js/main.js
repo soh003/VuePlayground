@@ -1,22 +1,28 @@
 const app = Vue.createApp({
     data(){
         return{
-            intro:'Indtast kunder til kundedatabase',
-            navn: null,
-            efternavn: null,
-            id: null,
-            kundeListe: [],
+            intro:'Playgroundstable',
+            playgrounds: [],
+            newPlayground:{
+                name:'',
+                MaxChildren: null,
+                MinAge: null,
+            },
 
         }
     }, 
-    methods: {
-        addMethod(){
-            this.kundeListe.push({navn:this.navn, efternavn:this.efternavn, id:this.id})
-            this.navn=null;
-            this.efternavn=null;
-            this.id=null;
-
-        },
+    methods: {        
+        getAll(){
+            axios.get('https://playgroundrest20250109130538.azurewebsites.net/api/Playgrounds')
+            .then(Response=>{
+                this.playgrounds=Response.data;
+            })
+            .catch(
+                error=>{
+                    console.log(error)
+                }
+              )
+        }
     },
     computed:{
         myComputed(){
