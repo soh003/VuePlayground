@@ -28,6 +28,7 @@
                     <th>Name</th>
                     <th>Maksimum Children</th>
                     <th>Minimum Age</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,7 +36,10 @@
                     <td>{{ playground.id }}</td>
                     <td>{{ playground.name }}</td>
                     <td>{{ playground.maxChildren }}</td>
-                    <td>{{ playground.minAge }}</td>                    
+                    <td>{{ playground.minAge }}</td> 
+                    <td>
+                        <button v-on:click="editPlayground(playground)" class="btn btn-warning btn-sm">Edit</button>
+                    </td>                   
                 </tr>
             </tbody>
         </table>
@@ -47,6 +51,9 @@
 
         <!--knap her-->
         <button v-on:click="addMethod" class="simpel-knap" >Add Playground</button>
+        <button v-on:click="updateMethod" class="btn btn-success" v-if="newPlayground.id">Update Playground</button>
+
+        
 
     </div>
     

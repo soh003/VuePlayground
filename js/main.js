@@ -47,8 +47,21 @@ const app = Vue.createApp({
             })
         },
         updateMethod(){
+            axios.put(`https://playgroundrest20250109130538.azurewebsites.net/api/Playgrounds/${this.newPlayground.id}`, this.newPlayground)
+            .then(Response => {
+                console.log('Playground updated', Response.data);
+                this.getAll(); // Hent den opdaterede liste
+                this.newPlayground = { id: null, name: '', maxChildren: null, minAge: null }; // Ryd inputfelter
+            })
+            .catch(error => {
+                console.log(error);
+            });
             
+        },
+        editPlayground(playground){
+            this.newPlayground = { ...playground }; // Kopier værdierne til formularen
         }
+    
     },
     computed:{
         myComputed(){
